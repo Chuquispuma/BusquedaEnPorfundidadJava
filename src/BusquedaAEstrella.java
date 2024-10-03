@@ -1,9 +1,14 @@
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
+import java.util.Deque;
+import java.util.logging.Logger;
 
 public class BusquedaAEstrella {
+
+    private static final Logger logger = Logger.getLogger(BusquedaAEstrella.class.getName());
     public static void buscar(NodoDeBusquedaF raiz, boolean d)
     {
         ListaOrdenadaSE<NodoDeBusquedaF> cola = new ListaOrdenadaSE<NodoDeBusquedaF>();
@@ -43,9 +48,9 @@ public class BusquedaAEstrella {
 
         while (!cola.estaVacia()) // mientras la cola no este vacía
         {
-            System.out.print("Sale de la cola: ");
-            NodoDeBusquedaF nodoTemp = (NodoDeBusquedaF) cola.eliminarAlInicio();
-            System.out.print(" (f = " + nodoTemp.getF()+") ");
+            logger.info("Sale de la cola: ");
+            NodoDeBusquedaF nodoTemp = cola.eliminarAlInicio();
+            logger.info(" (f = " + nodoTemp.getF()+") ");
             nodoTemp.getEstadoActual().mostrarEstado();
             // si el nodoTemp no es el estado meta
             if (!nodoTemp.getEstadoActual().esMeta())
@@ -92,7 +97,7 @@ public class BusquedaAEstrella {
             {
                 // Use una pila para seguir el camino desde el estado inicial
                 // al estado meta
-                Stack<NodoDeBusquedaF> caminoSolucion = new Stack<NodoDeBusquedaF>();
+                Deque<NodoDeBusquedaF> caminoSolucion = new ArrayDeque<>();
                 caminoSolucion.push(nodoTemp);
                 nodoTemp = nodoTemp.getPadre();
 
@@ -110,14 +115,12 @@ public class BusquedaAEstrella {
                 {
                     nodoTemp = caminoSolucion.pop();
                     nodoTemp.getEstadoActual().mostrarEstado();
-                    System.out.println();
-                    System.out.println();
+                    logger.info("");
+                    logger.info("");
                 }
-                //System.out.println("El costo fue: " + nodoTemp.getCosto());
                 if (d)
                 {
-                    System.out.println("El número de nodos examinados: "
-                                    + contadorBusqueda);
+                    logger.fine("El número de nodos examinados: " + contadorBusqueda);
                 }
 
                 System.exit(0);
@@ -125,7 +128,7 @@ public class BusquedaAEstrella {
         }
 
         // No debería ocurrir nunca.
-        System.out.println("Error! Solución no encontrada!");
+        logger.info("Error! Solución no encontrada!");
     } 
 }
 

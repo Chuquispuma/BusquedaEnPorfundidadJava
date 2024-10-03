@@ -1,7 +1,8 @@
 # BusquedaEnPorfundidadJava
 
 Correcciones del SonarLint
-Caso 1: Uso de System.out en lugar de un Logger
+
+##Caso 1: Uso de System.out en lugar de un Logger
 Violación: Replace this use of System.out by a logger.sonarlint(java:S106)
 
 Descripción: El uso de System.out para imprimir en la consola no es una buena práctica, ya que no es flexible ni escalable. Se recomienda utilizar un sistema de logging.
@@ -20,7 +21,7 @@ public class BusquedaAEstrella {
     }
 }
 
-Caso 2: Cast innecesario
+##Caso 2: Cast innecesario
 Violación: Unnecessary cast (sonarlint(java:S1905))
 
 Descripción: SonarLint detectó que el código contiene un cast innecesario, lo que aumenta la complejidad sin proporcionar ningún beneficio.
@@ -31,7 +32,7 @@ Fragmento de Código:
 NodoDeBusquedaF nodoTemp = cola.eliminarAlInicio();
 
 
-Caso 3: Reemplazo de clase sincronizada Stack
+##Caso 3: Reemplazo de clase sincronizada Stack
 Violación: Replace synchronized class Stack by unsynchronized class (sonarlint(java:S1149))
 
 Descripción: El uso de la clase Stack está desaconsejado porque está sincronizada, lo que puede afectar al rendimiento si no se necesita sincronización. Se sugiere usar una clase no sincronizada, como Deque, para manejar las operaciones LIFO (Last In, First Out).
@@ -42,7 +43,7 @@ Fragmento de Código:
 Deque<NodoDeBusquedaF> caminoSolucion = new ArrayDeque<>();
 caminoSolucion.push(nodoTemp);
 
-Caso 4: Código comentado innecesario
+##Caso 4: Código comentado innecesario
 Violación: This block of commented-out lines of code should be removed.sonarlint(java:S125)
 
 Descripción: El código comentado sin utilidad aumenta el ruido en el código y puede volverse obsoleto con el tiempo, haciéndolo difícil de mantener.

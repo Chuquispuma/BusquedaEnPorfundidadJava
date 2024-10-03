@@ -10,6 +10,7 @@ Correcciones del SonarLint
 **Corrección:** Reemplazar System.out con un logger.
 
 **Fragmento de Código:**
+```Java
 import java.util.logging.Logger;
 
 public class BusquedaAEstrella {
@@ -20,7 +21,7 @@ public class BusquedaAEstrella {
         logger.info("Sale de la cola: ");
     }
 }
-
+```
 ## Caso 2: Cast innecesario
 **Violación:** Unnecessary cast (sonarlint(java:S1905))
 
